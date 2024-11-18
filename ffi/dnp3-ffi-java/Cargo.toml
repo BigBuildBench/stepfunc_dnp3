@@ -1,0 +1,27 @@
+[package]
+name = "dnp3-ffi-java"
+version = "1.6.0"
+build = "build.rs"
+
+# inherit from workspace
+rust-version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+homepage.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+
+[features]
+default = ["tls", "serial"]
+tls = ["dnp3-ffi/tls"]
+serial = ["dnp3-ffi/serial"]
+
+[build-dependencies]
+dnp3-schema = { path = "../dnp3-schema" }
+oo-bindgen = { workspace = true }
